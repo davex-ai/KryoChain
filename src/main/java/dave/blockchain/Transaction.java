@@ -1,6 +1,8 @@
 package dave.blockchain;
 
+import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.ArrayList;
 
 public class Transaction {
     public String transactionId;
@@ -30,5 +32,14 @@ public class Transaction {
                         StringUtil.getStringFromKey(reciepient) +
                         Float.toString(value) + sequence
         );
+    }
+
+    public void generateSignature(PrivateKey privateKey) {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        signature = StringUtil.applyECDSASig(privateKey,data);
+    }
+    public boolean verifiySignature() {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        return StringUtil.verifyECDSASig(sender, data, signature);
     }
 }
