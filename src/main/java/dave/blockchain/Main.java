@@ -7,6 +7,30 @@ import java.util.ArrayList;
 
 public class Main {
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
+
+
+    public static Boolean isChainValid() {
+        Block currentBlock;
+        Block previousBlock;
+
+        //loop through blockchain to check hashes:
+        for(int i=1; i < blockchain.size(); i++) {
+            currentBlock = blockchain.get(i);
+            previousBlock = blockchain.get(i-1);
+            //compare registered hash and calculated hash:
+            if(!currentBlock.hash.equals(currentBlock.calculateHash()) ){
+                System.out.println("Current Hashes not equal");
+                return false;
+            }
+            //compare previous hash and registered previous hash
+            if(!previousBlock.hash.equals(currentBlock.previousHash) ) {
+                System.out.println("Previous Hashes not equal");
+                return false;
+            }
+        }
+        return true;
+    }
+    view rawBlock.Java hosted with ❤ by GitHub
     public static void main(String[] args) {
         System.out.println("Hello, World!");
 //        Block genesisBlock = new Block("Hi im the first block", "0");
