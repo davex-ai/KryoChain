@@ -36,7 +36,6 @@ public class StringUtil {
         return output;
     }
 
-    //Verifies a String signature
     public static boolean verifyECDSASig(PublicKey publicKey, String data, byte[] signature) {
         try {
             Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");
