@@ -1,4 +1,6 @@
 package dave.blockchain;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -46,7 +48,7 @@ public class Block {
         //process transaction and check if valid, unless block is genesis block then ignore.
         if(transaction == null) return false;
         if((previousHash != "0")) {
-            if((transaction.processTransaction() != true)) {
+            if((!transaction.processTransaction())) {
                 System.out.println("Transaction failed to process. Discarded.");
                 return false;
             }
