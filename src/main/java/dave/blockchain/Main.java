@@ -30,7 +30,7 @@ public class Main {
         }
         return true;
     }
-    view rawBlock.Java hosted with ❤ by GitHub
+
     public static void main(String[] args) {
         System.out.println("Hello, World!");
 //        Block genesisBlock = new Block("Hi im the first block", "0");
